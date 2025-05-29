@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "type": "module",
+  "main": "./src/backend.ts",
+  "scripts": {
+    "db:generate": "prisma migrate dev",
+    "db:migrate": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.3",
+    "@hono/trpc-server": "^0.3.4",
+    "@prisma/client": "^6.8.2",
+    "@trpc/server": "^11.1.4",
+    "hono": "^4.7.10",
+    "prisma": "^6.8.2",
+    "zod": "^3.25.34"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  }
+}

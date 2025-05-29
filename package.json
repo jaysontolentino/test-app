@@ -1,0 +1,21 @@
+{
+  "name": "test-app-monorepo",
+  "version": "1.0.0",
+  "description": "This is a monorepo for Hono as backend and React (Vite) as frontend and tRPC for api layer",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend & npm run dev --workspace=backend"
+  },
+  "workspaces": [
+    "./packages/frontend",
+    "./packages/backend"
+  ],
+  "keywords": [
+    "Hono",
+    "React",
+    "Vite",
+    "tRPC"
+  ],
+  "author": "Jayson T",
+  "license": "ISC"
+}
