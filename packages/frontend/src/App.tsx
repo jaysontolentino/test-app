@@ -1,4 +1,5 @@
 import { CreateTaskForm } from "./components/ui/create-task-form";
+import { Skeleton } from "./components/ui/skeleton";
 import { api, type RouterOutputs } from "./trpc/react";
 
 type Task = RouterOutputs["task"]["list"][number];
@@ -15,7 +16,14 @@ function App() {
 
         <div className="rounded w-full">
           {isLoading ? (
-            <div>Loading...</div>
+            <ul className="flex flex-col gap-3">
+              {Array.from([1, 2, 3]).map((n: number) => (
+                <Skeleton
+                  key={n}
+                  className="w-full h-12 rounded-lg bg-slate-200"
+                />
+              ))}
+            </ul>
           ) : (
             <ul className="flex flex-col gap-3">
               {data.map((task: Task) => (
