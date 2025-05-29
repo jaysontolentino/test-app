@@ -62,25 +62,23 @@ export function CreateTaskForm() {
             <CardDescription>Add new task.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <FormField
-                    control={form.control}
-                    name="task"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Task (Text)</FormLabel>
-                        <FormControl>
-                          <Input placeholder="text task" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <FormField
+                  control={form.control}
+                  name="task"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Task (Text)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="text task" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
-            </form>
+            </div>
           </CardContent>
           <CardFooter className="flex justify-between">
             <Button
