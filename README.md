@@ -15,3 +15,8 @@ $ npm i --workspaces
 ```bash
 $ npm run dev
 ```
+
+## Env variables
+
+Go to frontend and backend
+copy .env.example, update the variables value and save it as .env
