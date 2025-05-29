@@ -8,6 +8,7 @@ export const taskRouter = trpc.router({
       const tasks = await ctx.db.task.findMany();
       return tasks;
     } catch (error) {
+      console.log("ERROR >>> ", error);
       throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
     }
   }),
