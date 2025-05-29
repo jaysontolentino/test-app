@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { CreateTaskForm } from "./components/ui/create-task-form";
+import { api, type RouterOutputs } from "./trpc/react";
+
+type Task = RouterOutputs["task"]["list"][number];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { data = [], isLoading } = api.task.list.useQuery();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex bg-slate-100 flex-col w-screen h-screen flex-1 justify-center items-center">
+      <div className="flex flex-col gap-4 w-2xl">
+        <h3 className="text-2xl text-center text-slate-800">Test app</h3>
+
+        <CreateTaskForm />
+
+        <div className="rounded w-full">
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <ul className="flex flex-col gap-3">
+              {data.map((task: Task) => (
+                <li
+                  key={task.id}
+                  className="rounded-lg shadow border p-3 bg-gray-50 text-lg text-left text-slate-700"
+                >
+                  {task.task}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
